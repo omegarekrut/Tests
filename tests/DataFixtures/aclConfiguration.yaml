@@ -1,0 +1,35 @@
+services:
+    test.acl_assertion_true:
+        class: Tests\Unit\Util\Acl\Assertion
+        arguments:
+            - true
+
+    test.acl_assertion_false:
+        class: Tests\Unit\Util\Acl\Assertion
+        arguments:
+            - false
+
+acl:
+    roles:
+        - {name: ROLE_USER}
+        - {name: ROLE_ADVANCED_USER, parents: ROLE_USER}
+        - {name: ROLE_ADMIN}
+        - {name: IS_AUTHENTICATED_ANONYMOUSLY}
+
+    resources:
+        - {name: page}
+        - {name: cant_trash_page, parent: page}
+
+    rules:
+        - {type: allow, roles: ROLE_ADMIN}
+        - {type: deny, roles: ROLE_ADMIN, resources: page, permissions: part_view, assertions: '@test.acl_assertion_true'}
+        - {type: allow, roles: ROLE_USER, resources: page, permissions: view}
+        - {type: allow, roles: ROLE_USER, resources: page, permissions: delete}
+        - {type: deny, roles: ROLE_USER, resources: cant_trash_page, permissions: delete}
+        - {type: deny, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - {type: allow, roles: IS_AUTHENTICATED_ANONYMOUSLY, resources: page, permissions: view}
+        - {type: allow, roles: IS_AUTHENTICATED_ANONYMOUSLY, resources: page, permissions: part_view, assertions: '@test.acl_assertion_false'}
+        - {type: allow, roles: IS_AUTHENTICATED_ANONYMOUSLY, resources: page, permissions: ajax_view, assertions: ['@test.acl_assertion_true', '@test.acl_assertion_false'], assertions_strategy: 'AtLeastOne'}
+
+
+

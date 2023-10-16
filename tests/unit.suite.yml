@@ -1,0 +1,2 @@
+bootstrap: ../phpunit_bootstrap.php
+path: Unit

@@ -1,0 +1,59 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Красноярск",
+               "short_name" : "Красноярск",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "город Красноярск",
+               "short_name" : "г. Красноярск",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Красноярский край",
+               "short_name" : "Красноярский край",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Россия",
+               "short_name" : "RU",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Красноярск, Красноярский край, Россия",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 56.133259,
+                  "lng" : 93.12050699999999
+               },
+               "southwest" : {
+                  "lat" : 55.9201999,
+                  "lng" : 92.61096089999999
+               }
+            },
+            "location" : {
+               "lat" : 56.01528339999999,
+               "lng" : 92.8932476
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 56.133259,
+                  "lng" : 93.12050699999999
+               },
+               "southwest" : {
+                  "lat" : 55.9201999,
+                  "lng" : 92.61096089999999
+               }
+            }
+         },
+         "place_id" : "ChIJ4zf_ocmv11wR_0fWj0bhl9U",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

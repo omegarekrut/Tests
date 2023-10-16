@@ -1,0 +1,38 @@
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+actor: Tester
+bootstrap: ''
+path: Acceptance
+modules:
+    enabled:
+        - PhpBrowser:
+            url: '%BASE_URL%:%PORT%'
+            curl:
+                CURLOPT_TIMEOUT_MS: 60000
+        - \Helper\Acceptance
+        - \Repository\RecordRepository
+        - \Repository\ArticleRepository
+        - \Repository\CategoryRepository
+        - \Repository\FleaMarketCategoryRepository
+        - \Repository\CompanyRepository
+        - \Repository\CompanyArticleRepository
+        - \Repository\TidingsRepository
+        - \Repository\CommentRepository
+        - \Repository\UserRepository
+        - \Repository\WaterRepository
+        - \Repository\GaugingStationRepository
+        - \Repository\RubricRepository
+        - \Repository\RegionRepository
+        - REST:
+           depends: PhpBrowser
+        - Asserts
+        - Db:
+            dsn: 'mysql:host=%DB_HOST%;dbname=%DB_NAME%;charset=utf8'
+            user: '%DB_USERNAME%'
+            password: '%DB_PASSWORD%'
+            cleanup: false
+            populate: false
